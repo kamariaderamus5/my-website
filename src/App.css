@@ -98,6 +98,18 @@
   font-size: clamp(3.2rem, 5vw, 5.8rem);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.signature {
+  margin: 0 0 8px;
+  color: #111111;
+  font-family: 'Great Vibes', 'Segoe Script', cursive;
+  font-size: clamp(4.5rem, 6vw, 7.5rem);
+  line-height: 0.7;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
 .lede {
   margin-top: 18px;
   max-width: 540px;

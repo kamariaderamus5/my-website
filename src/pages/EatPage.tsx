@@ -5,7 +5,7 @@ import { reviews } from '../data/content'
 export default function EatPage() {
   return (
     <section className="page-section">
-      <PageHeader title="Restaurant reviews & favorite tables." />
+      <PageHeader title="Good food, good stories, & a very good reason to go back" />
 
       <div className="story-grid">
         {reviews.map((review) => (

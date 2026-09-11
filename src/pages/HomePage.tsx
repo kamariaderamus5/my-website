@@ -6,8 +6,9 @@ export default function HomePage() {
     <>
       <section className="hero-section">
         <div className="hero-copy">
-          <p className="eyebrow">What I’m eating, where I’m going, and what I can’t stop thinking about</p>
-          <h1>Food, food, food, and... more food.</h1>
+          <h1 className="signature">By Kamaria</h1>
+          <br/>
+          <h2>Food, food, food, and... more food.</h2>
           <p className="lede">
             Restaurant reviews, recipes, and the reasons we remember a meal.
           </p>
