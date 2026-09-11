@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Marcellus&display=swap');
+
 .page-shell {
   width: min(1200px, calc(100% - 32px));
   margin: 0 auto;
@@ -98,16 +100,17 @@
   font-size: clamp(3.2rem, 5vw, 5.8rem);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-
 .signature {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   color: #111111;
-  font-family: 'Great Vibes', 'Segoe Script', cursive;
-  font-size: clamp(4.5rem, 6vw, 7.5rem);
-  line-height: 0.7;
-  letter-spacing: 0.04em;
+  font-family: 'Marcellus', 'Cormorant Garamond', serif;
+  font-size: clamp(1.65rem, 2.1vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: none;
   font-weight: 400;
+  font-style: normal;
+  opacity: 0.9;
 }
 
 .lede {
