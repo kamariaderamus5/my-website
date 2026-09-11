@@ -6,14 +6,14 @@ export default function HomePage() {
     <>
       <section className="hero-section">
         <div className="hero-copy">
-          <p className="eyebrow">Kitchen notes, city walks, and favorite tables</p>
+          <p className="eyebrow">What I’m eating, where I’m going, and what I can’t stop thinking about</p>
           <h1>Food, food, food, and... more food.</h1>
           <p className="lede">
-            Restaurant reviews, recipes, and the small details that make a meal feel like a memory.
+            Restaurant reviews, recipes, and the reasons we remember a meal.
           </p>
 
           <div className="hero-actions">
-            <NavLink to="/eat" className="primary-button">Read latest</NavLink>
+            <NavLink to="/eat" className="primary-button">Latest</NavLink>
             <NavLink to="/about" className="secondary-button">About</NavLink>
           </div>
         </div>
