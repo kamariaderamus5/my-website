@@ -7,9 +7,8 @@ export default function HomePage() {
             <section className="hero-section">
                 <div className="hero-copy">
                     <h1 className="signature">By Kamaria</h1>
-                    <br />
-                    <h2>Restaurants, Recipes,
-                        & Everything In Between</h2>
+                    <br/>
+                    <h2 className="hero-headline">From My Kitchen to My Favorite Tables</h2>
                     <p className="lede">
                         A collection of meals, adventures,
                         and things that bring me joy.
@@ -28,8 +27,6 @@ export default function HomePage() {
 
             <section className="section-block">
                 <div className="section-header">
-                    <p className="eyebrow">Explore</p>
-                    <h2>Eat, Cook, Wander</h2>
                 </div>
 
                 <div className="card-grid">

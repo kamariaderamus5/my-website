@@ -13,10 +13,17 @@ export default function AboutPage() {
                 <p>
                     I'm a lover of great food, good adventures and all the little things in between.
 
-
-
                     This space is where I share my favorite restaurants, recipes I love to make & new ones to try, travel plans, weekend getaways, and everything that brings me joy.
                 </p>
+
+                <a
+                    className="review-link"
+                    href="https://www.google.com/maps/contrib/118099088059334315479?g_ep=CAISEjI2LjMzLjEuOTYxODkxNDMyMBgAIIG9BCpTLDk0Mjk3Njk5LDk0MjMxMTg4LDk0MjgwNTY4LDQ3MDcxNzA0LDk0MjE4NjQxLDk0MjgyMTM0LDk0Mjg2ODY5LDEwMDgyMDI0NywxMDA4MjI1MDRCAlVT&skid=5e594a71-2e5f-434a-b2bf-572def094ec6&g_st=ia"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Read my Google reviews
+                </a>
             </div>
         </section>
     )

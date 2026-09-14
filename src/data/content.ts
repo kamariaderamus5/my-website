@@ -30,19 +30,19 @@ export const landingFeature = {
 
 export const landingCards = [
   {
-    title: 'Eat',
+    title: 'Last Night At',
     description: 'Reviews, favorite tables, and neighborhood notes.',
     image: eatImage,
     to: '/eat',
   },
   {
-    title: 'Cook',
+    title: 'Currently Cooking',
     description: 'Recipes, experiments, and the meals I keep returning to.',
     image: recipeImage,
     to: '/cook',
   },
   {
-    title: 'Wander',
+    title: "Next Weekend's Escape",
     description: 'Travel notes, streets, and the in-between moments.',
     image: wanderImage,
     to: '/wander',

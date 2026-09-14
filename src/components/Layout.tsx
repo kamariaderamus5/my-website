@@ -10,9 +10,9 @@ export default function Layout() {
 
         <nav className="main-nav" aria-label="Main navigation">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/eat">Eat</NavLink>
-          <NavLink to="/cook">Cook</NavLink>
-          <NavLink to="/wander">Wander</NavLink>
+          <NavLink to="/eat">The Food Map</NavLink>
+          <NavLink to="/cook">In The Kitchen</NavLink>
+          <NavLink to="/wander">Getaways</NavLink>
           <NavLink to="/about">About</NavLink>
         </nav>
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Marcellus&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 .page-shell {
   width: min(1200px, calc(100% - 32px));
@@ -96,36 +96,45 @@
   line-height: 0.94;
 }
 
-.hero-copy h1 {
-  font-size: clamp(3.2rem, 5vw, 5.8rem);
+.hero-headline {
+  margin: 0;
+  color: #171412;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.5rem, 4vw, 4.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  font-weight: 600;
 }
 
 .signature {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   color: #111111;
-  font-family: 'Marcellus', 'Cormorant Garamond', serif;
-  font-size: clamp(1.65rem, 2.1vw, 2.5rem);
-  line-height: 1;
-  letter-spacing: 0.12em;
-  text-transform: none;
-  font-weight: 400;
-  font-style: normal;
-  opacity: 0.9;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(6.2rem, 8.5vw, 11.5rem);
+  line-height: 0.8;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  font-style: italic;
+  opacity: 0.96;
 }
 
 .lede {
-  margin-top: 18px;
+  margin-top: 12px;
   max-width: 540px;
-  font-size: 1.08rem;
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: #504b47;
 }
 
 .hero-actions {
   display: flex;
-  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
   flex-wrap: wrap;
-  margin-top: 28px;
+  margin-top: 22px;
+  width: 100%;
+  transform: translateX(-42px);
 }
 
 .primary-button,
@@ -133,23 +142,25 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  padding: 0 1.2rem;
+  min-height: 48px;
+  padding: 0 1.35rem;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.68rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.11em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
 .primary-button {
   background: #1a1a1a;
   color: #f8f2ee;
-  box-shadow: 0 16px 28px rgba(26, 26, 26, 0.1);
+  box-shadow: 0 12px 24px rgba(26, 26, 26, 0.1);
 }
 
 .secondary-button {
-  border: 1px solid #cfc7c1;
+  border: 1px solid rgba(29, 27, 26, 0.2);
   color: #1d1b1a;
   background: rgba(255, 255, 255, 0.1);
 }
@@ -309,6 +320,25 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.review-link {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.8rem 1.1rem;
+  border: 1px solid rgba(31, 27, 25, 0.7);
+  color: #1d1a18;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.review-link:hover {
+  background: #1d1917;
+  color: #f9f6f3;
 }
 
 .highlight-row {
