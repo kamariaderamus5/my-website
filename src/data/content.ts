@@ -4,12 +4,51 @@ import eatImage from '../assets/restaurants/destin2026-1.jpeg'
 import recipeImage from '../assets/recipes/Poke.jpeg'
 import wanderImage from '../assets/restaurants/phoenix2026-1.jpeg'
 
+const restaurantAssets = import.meta.glob('../assets/restaurants/**/*.{jpeg,jpg,png,webp}', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>
+
+const restaurantAssetsByRestaurant = {
+  habaneros: {
+    setting: restaurantAssets['../assets/restaurants/habaneros2026/placesetting.jpeg'],
+    arroz: restaurantAssets['../assets/restaurants/habaneros2026/arroz.jpeg'],
+    enchiladas: restaurantAssets['../assets/restaurants/habaneros2026/enchiladasverde.jpeg'],
+    toast: restaurantAssets['../assets/restaurants/habaneros2026/toast.jpeg'],
+    queso: restaurantAssets['../assets/restaurants/habaneros2026/quesochorizo.jpeg'],
+    lachin: restaurantAssets['../assets/restaurants/habaneros2026/lachingaron.jpeg'],
+  },
+  bartaco: {
+    first: restaurantAssets['../assets/restaurants/bartaco2026/208AFA4C-A5B3-42C1-A92C-B16D438697D2_1_105_c.jpeg'],
+    second: restaurantAssets['../assets/restaurants/bartaco2026/46463825-3DE4-47D8-968C-BEF34619D775_1_105_c.jpeg'],
+    third: restaurantAssets['../assets/restaurants/bartaco2026/67482474-6EA7-44DB-954D-29AFD1F65D65_1_105_c.jpeg'],
+  },
+  chico: {
+    first: restaurantAssets['../assets/restaurants/chicocantina2026/07B76013-BC26-4E11-B224-E9F40CC1BA7F_4_5005_c.jpeg'],
+    second: restaurantAssets['../assets/restaurants/chicocantina2026/0A068D42-0779-4667-ACED-ED1339BEF9CD_4_5005_c.jpeg'],
+    third: restaurantAssets['../assets/restaurants/chicocantina2026/31702648-3449-48AC-9C01-0830357E8B21_4_5005_c.jpeg'],
+  },
+  yeppa: {
+    first: restaurantAssets['../assets/restaurants/yeppa2026/bolognese.jpeg'],
+    second: restaurantAssets['../assets/restaurants/yeppa2026/caesar.jpeg'],
+    third: restaurantAssets['../assets/restaurants/yeppa2026/clam.jpeg'],
+  },
+} as const
+
 export { heroImage, aboutImage, eatImage, recipeImage, wanderImage }
 
-export type ReviewItem = {
+export type RestaurantItem = {
   title: string
+  slug: string
   excerpt: string
   image: string
+  location: string
+  rating: string
+  website: string
+  googleReview: string
+  foodMenu: string[]
+  drinkMenu: string[]
+  gallery: Array<{ image: string; caption: string }>
 }
 
 export type RecipeItem = {
@@ -49,21 +88,77 @@ export const landingCards = [
   },
 ]
 
-export const reviews: ReviewItem[] = [
+export const restaurants: RestaurantItem[] = [
   {
-    title: 'Casa de Luz',
-    excerpt: 'Slow, warm, and exactly the kind of place that feels lived in.',
-    image: eatImage,
+    title: 'Habaneros',
+    slug: 'habaneros',
+    excerpt: 'Lively, warm, and full of the kind of food that makes you want to linger.',
+    image: restaurantAssetsByRestaurant.habaneros.setting,
+    location: 'Phoenix, AZ',
+    rating: '4.8/5',
+    website: 'https://www.google.com/search?q=Habaneros+Phoenix+AZ',
+    googleReview: 'https://www.google.com/search?q=Habaneros+Phoenix+AZ+Google+review',
+    foodMenu: ['Chicken enchiladas verdes', 'Chorizo queso', 'Street tacos', 'Rice and beans'],
+    drinkMenu: ['House margarita', 'Cucumber agua fresca', 'Horchata', 'Espresso martini'],
+    gallery: [
+      { image: restaurantAssetsByRestaurant.habaneros.setting, caption: 'The table setup and a full spread.' },
+      { image: restaurantAssetsByRestaurant.habaneros.arroz, caption: 'Arroz and beans.' },
+      { image: restaurantAssetsByRestaurant.habaneros.enchiladas, caption: 'Enchiladas verdes.' },
+      { image: restaurantAssetsByRestaurant.habaneros.toast, caption: 'Toast with a bright, savory finish.' },
+      { image: restaurantAssetsByRestaurant.habaneros.queso, caption: 'Queso con chorizo.' },
+      { image: restaurantAssetsByRestaurant.habaneros.lachin, caption: 'La Chingaron special.' },
+    ],
   },
   {
-    title: 'Harbor Table',
-    excerpt: 'A bright room, honest cooking, and a menu built around rhythm.',
-    image: eatImage,
+    title: 'Bartaco',
+    slug: 'bartaco',
+    excerpt: 'Easygoing coastal energy, light seafood, and a menu built for sharing.',
+    image: restaurantAssetsByRestaurant.bartaco.first,
+    location: 'Phoenix, AZ',
+    rating: '4.7/5',
+    website: 'https://www.google.com/search?q=Bartaco+Phoenix+AZ',
+    googleReview: 'https://www.google.com/search?q=Bartaco+Phoenix+AZ+Google+review',
+    foodMenu: ['Grilled fish tacos', 'Ceviche', 'Citrus salad', 'Street corn'],
+    drinkMenu: ['Margarita', 'Paloma', 'Horchata mocktail', 'Sparkling agua fresca'],
+    gallery: [
+      { image: restaurantAssetsByRestaurant.bartaco.first, caption: 'The first plate that set the tone.' },
+      { image: restaurantAssetsByRestaurant.bartaco.second, caption: 'A bright, citrusy coastal bite.' },
+      { image: restaurantAssetsByRestaurant.bartaco.third, caption: 'A laid-back table moment.' },
+    ],
   },
   {
-    title: 'The Olive Room',
-    excerpt: 'A neighborhood favorite with a lot of charm and a lot of heart.',
-    image: eatImage,
+    title: 'Chico Cantina',
+    slug: 'chico-cantina',
+    excerpt: 'Warm, lively, and a little bit celebratory from the first sip to the last bite.',
+    image: restaurantAssetsByRestaurant.chico.first,
+    location: 'Phoenix, AZ',
+    rating: '4.6/5',
+    website: 'https://www.google.com/search?q=Chico+Cantina+Phoenix+AZ',
+    googleReview: 'https://www.google.com/search?q=Chico+Cantina+Phoenix+AZ+Google+review',
+    foodMenu: ['Crispy tacos', 'Mole plate', 'Guac and chips', 'Tostadas'],
+    drinkMenu: ['Paloma', 'Margarita', 'Mexican beer', 'Cucumber lime spritz'],
+    gallery: [
+      { image: restaurantAssetsByRestaurant.chico.first, caption: 'A color-packed plate worth slowing down for.' },
+      { image: restaurantAssetsByRestaurant.chico.second, caption: 'A full table moment.' },
+      { image: restaurantAssetsByRestaurant.chico.third, caption: 'An easy favorite from the bar side.' },
+    ],
+  },
+  {
+    title: 'Yepa',
+    slug: 'yeppa',
+    excerpt: 'Comforting Italian classics with a little theater and a lot of flavor.',
+    image: restaurantAssetsByRestaurant.yeppa.first,
+    location: 'Phoenix, AZ',
+    rating: '4.9/5',
+    website: 'https://www.google.com/search?q=Yepa+Phoenix+AZ',
+    googleReview: 'https://www.google.com/search?q=Yepa+Phoenix+AZ+Google+review',
+    foodMenu: ['Bolognese', 'Caesar salad', 'Crispy potatoes', 'Fresh pasta'],
+    drinkMenu: ['Espresso martini', 'Classic negroni', 'House red', 'Sparkling wine'],
+    gallery: [
+      { image: restaurantAssetsByRestaurant.yeppa.first, caption: 'The bolognese that keeps you going back.' },
+      { image: restaurantAssetsByRestaurant.yeppa.second, caption: 'A bright, crisp start to the meal.' },
+      { image: restaurantAssetsByRestaurant.yeppa.third, caption: 'A shellfish course worth slowing down for.' },
+    ],
   },
 ]
 
@@ -152,6 +247,10 @@ export const recipes: RecipeItem[] = recipeCatalogSeed.map(([title, summary, des
 
 export function getRecipeBySlug(slug: string) {
   return recipes.find((recipe) => recipe.slug === slug) ?? null
+}
+
+export function getRestaurantBySlug(slug: string) {
+  return restaurants.find((restaurant) => restaurant.slug === slug) ?? null
 }
 
 export const aboutImageAsset = aboutImage
