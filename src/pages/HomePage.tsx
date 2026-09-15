@@ -21,7 +21,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="feature-spotlight">
-                    <img src={landingFeature.image} alt={landingFeature.title} />
+                    <img src={landingFeature.image} alt={landingFeature.title} loading="eager" fetchPriority="high" />
                 </div>
             </section>
 
@@ -32,7 +32,7 @@ export default function HomePage() {
                 <div className="card-grid">
                     {landingCards.map((card) => (
                         <NavLink key={card.title} to={card.to} className="feature-card">
-                            <img src={card.image} alt={card.title} />
+                            <img src={card.image} alt={card.title} loading="lazy" decoding="async" />
                             <div className="card-copy">
                                 <span>{card.title}</span>
                                 <p>{card.description}</p>

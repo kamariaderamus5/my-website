@@ -378,8 +378,10 @@
 .restaurant-detail img,
 .recipe-detail img {
   width: 100%;
-  height: 540px;
+  height: auto;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center;
   border-radius: 22px;
   box-shadow: var(--shadow);
 }
@@ -459,8 +461,10 @@
 .restaurant-photo img {
   display: block;
   width: 100%;
-  height: 320px;
+  height: auto;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center;
 }
 
 .restaurant-photo figcaption {

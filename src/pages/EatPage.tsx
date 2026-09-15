@@ -13,7 +13,7 @@ export default function EatPage() {
       <div className="story-grid">
         {restaurants.map((restaurant) => (
           <Link key={restaurant.slug} to={`/eat/${restaurant.slug}`} className="story-card link-card">
-            <img src={restaurant.image} alt={restaurant.title} />
+            <img src={restaurant.image} alt={restaurant.title} loading="lazy" decoding="async" />
             <div className="story-body">
               <p className="story-tag">Restaurant</p>
               <h3>{restaurant.title}</h3>

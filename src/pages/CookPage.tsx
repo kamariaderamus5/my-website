@@ -11,7 +11,7 @@ export default function CookPage() {
 
       <div className="highlight-row">
         <div className="highlight-card highlight-large">
-          <img src={featuredRecipe.image} alt={featuredRecipe.title} />
+          <img src={featuredRecipe.image} alt={featuredRecipe.title} loading="lazy" decoding="async" />
           <div>
             <p className="story-tag">Featured</p>
             <h3>{featuredRecipe.title}</h3>
