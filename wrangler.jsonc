@@ -1,0 +1,24 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "my-website",
+	"compatibility_date": "2026-09-15",
+	"observability": {
+		"enabled": true
+	},
+	"assets": {
+		"not_found_handling": "single-page-application"
+	},
+	"d1_databases": [
+		{
+			"binding": "bykamaria_db",
+			"database_name": "bykamaria-db",
+			"database_id": "ccc23d6e-69d1-49bc-a7d7-33fe4672aa4d"
+		}
+	],
+	"r2_buckets": [
+		{
+			"bucket_name": "bykamaria-media",
+			"binding": "bykamaria_media"
+		}
+	]
+}
