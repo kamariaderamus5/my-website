@@ -13,13 +13,13 @@ const restaurantAssetsByRestaurant = {
   habaneros: {
     setting: restaurantAssets['../assets/restaurants/habaneros2026/optimized/placesetting.jpeg'],
     arroz: restaurantAssets['../assets/restaurants/habaneros2026/optimized/arrozlatumbada.jpeg'],
-    enchiladas: restaurantAssets['../assets/restaurants/habaneros2026/enchiladasverdes.jpeg'],
-    toast: restaurantAssets['../assets/restaurants/habaneros2026/toast.jpeg'],
-    queso: restaurantAssets['../assets/restaurants/habaneros2026/quesowithchorizo.jpeg'],
-    lachin: restaurantAssets['../assets/restaurants/habaneros2026/lachingona.jpeg'],
-    salvaje: restaurantAssets['../assets/restaurants/habaneros2026/salvaje.jpeg'],
-    colorada: restaurantAssets['../assets/restaurants/habaneros2026/colorada.jpeg'],
-    senorpepino: restaurantAssets['../assets/restaurants/habaneros2026/senorpepino.jpeg']
+    enchiladas: restaurantAssets['../assets/restaurants/habaneros2026/optimized/enchiladasverdes.jpeg'],
+    toast: restaurantAssets['../assets/restaurants/habaneros2026/optimized/toast.jpeg'],
+    queso: restaurantAssets['../assets/restaurants/habaneros2026/optimized/quesowithchorizo.jpeg'],
+    lachin: restaurantAssets['../assets/restaurants/habaneros2026/optimized/lachingona.jpeg'],
+    salvaje: restaurantAssets['../assets/restaurants/habaneros2026/optimized/salvaje.jpeg'],
+    colorada: restaurantAssets['../assets/restaurants/habaneros2026/optimized/colorada.jpeg'],
+    senorpepino: restaurantAssets['../assets/restaurants/habaneros2026/optimized/senorpepino.jpeg']
   },
   bartaco: {
     first: restaurantAssets['../assets/restaurants/bartaco2026/tacos.jpeg'],
