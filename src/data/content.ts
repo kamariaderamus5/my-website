@@ -12,7 +12,7 @@ const restaurantAssets = import.meta.glob('../assets/restaurants/**/*.{jpeg,jpg,
 const restaurantAssetsByRestaurant = {
   habaneros: {
     setting: restaurantAssets['../assets/restaurants/habaneros2026/optimized/placesetting.jpeg'],
-    arroz: restaurantAssets['../assets/restaurants/habaneros2026/arrozlatumbada.jpeg'],
+    arroz: restaurantAssets['../assets/restaurants/habaneros2026/optimized/arrozlatumbada.jpeg'],
     enchiladas: restaurantAssets['../assets/restaurants/habaneros2026/enchiladasverdes.jpeg'],
     toast: restaurantAssets['../assets/restaurants/habaneros2026/toast.jpeg'],
     queso: restaurantAssets['../assets/restaurants/habaneros2026/quesowithchorizo.jpeg'],
