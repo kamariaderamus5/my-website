@@ -37,11 +37,11 @@ const restaurantAssetsByRestaurant = {
     third: restaurantAssets['../assets/restaurants/chicocantina2026/31702648-3449-48AC-9C01-0830357E8B21_4_5005_c.jpeg'],
   },
   yeppa: {
-    first: restaurantAssets['../assets/restaurants/yeppa2026/bolognese.jpeg'],
-    second: restaurantAssets['../assets/restaurants/yeppa2026/caesar.jpeg'],
-    third: restaurantAssets['../assets/restaurants/yeppa2026/clam.jpeg'],
-    fourth: restaurantAssets['../assets/restaurants/yeppa2026/espressomartini.jpeg'],
-    fifth: restaurantAssets['../assets/restaurants/yeppa2026/sidecar.jpeg']
+    first: restaurantAssets['../assets/restaurants/yeppa2026/optimized/bolognese.jpeg'],
+    second: restaurantAssets['../assets/restaurants/yeppa2026/optimized/caesar.jpeg'],
+    third: restaurantAssets['../assets/restaurants/yeppa2026/optimized/clam.jpeg'],
+    fourth: restaurantAssets['../assets/restaurants/yeppa2026/optimized/espressomartini.jpeg'],
+    fifth: restaurantAssets['../assets/restaurants/yeppa2026/optimized/sidecar.jpeg']
   },
 } as const
 
