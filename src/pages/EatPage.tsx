@@ -1,10 +1,44 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
-import { restaurants } from '../data/content'
+
+type Restaurant = {
+  slug: string
+  name: string
+  excerpt: string | null
+  location: string | null
+  featured_media: {
+    url: string
+    alt_text: string | null
+  } | null
+}
 
 export default function EatPage() {
   const [query, setQuery] = useState('')
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadRestaurants() {
+      try {
+        const response = await fetch('/api/restaurants')
+
+        if (!response.ok) {
+          throw new Error('Failed to load restaurants')
+        }
+
+        const data: Restaurant[] = await response.json()
+        setRestaurants(data)
+      } catch (error) {
+        console.error(error)
+        setRestaurants([])
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadRestaurants()
+  }, [])
 
   const visibleRestaurants = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -14,10 +48,10 @@ export default function EatPage() {
     }
 
     return restaurants.filter((restaurant) => {
-      const haystack = `${restaurant.title} ${restaurant.excerpt} ${restaurant.location}`.toLowerCase()
+      const haystack = `${restaurant.name} ${restaurant.excerpt ?? ''} ${restaurant.location ?? ''}`.toLowerCase()
       return haystack.includes(normalizedQuery)
     })
-  }, [query])
+  }, [query, restaurants])
 
   return (
     <section className="page-section">
@@ -39,18 +73,34 @@ export default function EatPage() {
         </label>
       </div>
 
-      <div className="story-grid">
-        {visibleRestaurants.map((restaurant) => (
-          <Link key={restaurant.slug} to={`/eat/${restaurant.slug}`} className="story-card link-card">
-            <img src={restaurant.image} alt={restaurant.title} loading="lazy" decoding="async" />
-            <div className="story-body">
-              <p className="story-tag">Restaurant</p>
-              <h3>{restaurant.title}</h3>
-              <p>{restaurant.excerpt}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
+      {loading ? (
+        <p>Loading restaurants...</p>
+      ) : (
+        <div className="story-grid">
+          {visibleRestaurants.map((restaurant) => (
+            <Link
+              key={restaurant.slug}
+              to={`/eat/${restaurant.slug}`}
+              className="story-card link-card"
+            >
+              {restaurant.featured_media && (
+                <img
+                  src={restaurant.featured_media.url}
+                  alt={restaurant.featured_media.alt_text ?? restaurant.name}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+
+              <div className="story-body">
+                <p className="story-tag">Restaurant</p>
+                <h3>{restaurant.name}</h3>
+                <p>{restaurant.excerpt}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </section>
   )
 }
