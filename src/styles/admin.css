@@ -1,0 +1,282 @@
+/* ========================================
+   Admin
+   ======================================== */
+
+.admin-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.admin-header h1 {
+  margin: 0.35rem 0 0.5rem;
+}
+
+.admin-header p {
+  margin: 0;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.admin-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1.75rem;
+}
+
+.admin-card h2 {
+  margin: 0.4rem 0 0.75rem;
+}
+
+.admin-card p {
+  line-height: 1.6;
+}
+
+.admin-card .secondary-button {
+  display: inline-flex;
+  margin-top: 1.25rem;
+}
+
+.admin-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-list .admin-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2rem;
+}
+
+.admin-list .admin-card > div {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  column-gap: 1.5rem;
+  align-items: center;
+}
+
+.admin-list .admin-card img {
+  grid-row: 1 / span 4;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-list .admin-card .story-tag {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.admin-list .admin-card h2 {
+  margin: 0.15rem 0;
+}
+
+.admin-list .admin-card p:not(.story-tag) {
+  margin: 0.15rem 0;
+}
+
+.admin-list .admin-card .secondary-button {
+  margin-top: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 650px) {
+  .admin-list .admin-card {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-list .admin-card > div {
+    grid-template-columns: 90px minmax(0, 1fr);
+  }
+
+  .admin-list .admin-card img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+.admin-back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.admin-back-link:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   Admin Forms
+   ======================================== */
+
+.admin-form {
+  max-width: 1000px;
+}
+
+.admin-form-section {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.admin-form-section:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.admin-form-section > .story-tag {
+  margin-bottom: 1.5rem;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-form label > span,
+.admin-upload-placeholder > p {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.admin-form input,
+.admin-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #fff;
+  font: inherit;
+  color: inherit;
+  border-radius: 0;
+}
+
+.admin-form textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  outline: none;
+  border-color: rgba(0, 0, 0, 0.55);
+}
+
+.admin-upload-placeholder {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.admin-upload-placeholder p {
+  margin: 0 0 1rem;
+}
+
+.admin-upload-placeholder input {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.admin-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.admin-form-actions .secondary-button {
+  margin-top: 0;
+}
+
+@media (max-width: 650px) {
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-form-actions {
+    flex-direction: column;
+  }
+
+  .admin-form-actions .secondary-button {
+    width: 100%;
+  }
+}
+
+.admin-form,
+.admin-header,
+.admin-grid,
+.admin-list {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-form-section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-form input,
+.admin-form textarea {
+  max-width: 100%;
+}
+
+.admin-form-grid {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 76px auto 0;
+  padding: 0 32px 84px;
+  box-sizing: border-box;
+}
+
+.admin-page *,
+.admin-page *::before,
+.admin-page *::after {
+  box-sizing: border-box;
+}
+
+@media (max-width: 650px) {
+  .admin-page {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}

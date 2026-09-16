@@ -7,6 +7,9 @@ import HomePage from './pages/HomePage'
 import RecipeDetailPage from './pages/RecipeDetailPage'
 import RestaurantDetailPage from './pages/RestaurantDetailPage'
 import WanderPage from './pages/WanderPage'
+import AdminPage from './admin/AdminPage'
+import RestaurantsAdminPage from './admin/RestaurantsAdminPage'
+import NewRestaurantPage from './admin/NewRestaurantPage'
 
 export default function App() {
   return (
@@ -20,6 +23,13 @@ export default function App() {
         <Route path="/wander" element={<WanderPage />} />
         <Route path="/about" element={<AboutPage />} />
       </Route>
+
+      <Route path="/admin" element={<AdminPage />} />
+      <Route path="/admin/restaurants" element={<RestaurantsAdminPage />} />
+      <Route
+        path="/admin/restaurants/new"
+        element={<NewRestaurantPage />}
+      />
     </Routes>
   )
 }
