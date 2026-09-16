@@ -25,6 +25,28 @@ export default function AboutPage() {
                     Read my Google reviews
                 </a>
             </div>
+
+            <div className="about-playlist-text">
+                <PageHeader
+                    className="playlist-header"
+                    title="What's Playing in My Kitchen"
+                    subtitle="The playlist I put on when I'm cooking, pouring a glass of wine, and taking my time."
+                />
+            </div>
+
+            <div className="about-playlist-embed">
+                <iframe
+                    title="What's Playing in My Kitchen playlist"
+                    style={{ borderRadius: '12px' }}
+                    src="https://open.spotify.com/embed/playlist/3c0OhC5ce6S04PernKTSlT?utm_source=generator&si=51d94b9503b0484e"
+                    width="100%"
+                    height="352"
+                    frameBorder="0"
+                    allowFullScreen
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                />
+            </div>
         </section>
     )
 }

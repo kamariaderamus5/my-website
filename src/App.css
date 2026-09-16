@@ -295,6 +295,10 @@
   line-height: 1.7;
 }
 
+.about-text p {
+  font-size: 1.0rem;
+}
+
 .story-card img {
   height: 260px;
 }
@@ -312,6 +316,10 @@
   font-size: clamp(2.8rem, 4vw, 4.2rem);
 }
 
+.page-header h1 {
+  margin-bottom: 12px;
+}
+
 .page-header {
   margin-bottom: 28px;
 }
@@ -325,6 +333,8 @@
 .review-link {
   display: inline-flex;
   align-items: center;
+  align-self: center;
+  transform: translateX(-14px);
   width: fit-content;
   padding: 0.8rem 1.1rem;
   border: 1px solid rgba(31, 27, 25, 0.7);
@@ -521,6 +531,37 @@
   color: var(--ink);
 }
 
+.eat-page-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.eat-search {
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+.eat-search input {
+  width: 220px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.25);
+  padding: 0.8rem 0.9rem;
+  font: inherit;
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .eat-page-header-row {
+    flex-direction: column;
+  }
+
+  .eat-search input {
+    width: 100%;
+  }
+}
+
 .recipe-library-list {
   display: flex;
   flex-direction: column;
@@ -629,6 +670,27 @@
   box-shadow: var(--shadow);
 }
 
+.about-playlist-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.playlist-header h1 {
+  font-size: clamp(2rem, 2.8vw, 3rem);
+  white-space: nowrap;
+  margin-bottom: 14px;
+}
+
+.playlist-header p {
+  font-size: 1.5rem;
+}
+
+.about-playlist-embed iframe {
+  display: block;
+  width: 100%;
+}
+
 @media (max-width: 900px) {
   .hero-section,
   .card-grid,
@@ -690,6 +752,11 @@
 
   .hero-copy h1 {
     font-size: 2.7rem;
+  }
+
+  .playlist-header h1 {
+    white-space: normal;
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
   }
 
   .feature-spotlight {
