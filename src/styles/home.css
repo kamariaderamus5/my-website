@@ -1,0 +1,103 @@
+/* Home page hero and feature spotlight */
+
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  color: #171412;
+  letter-spacing: -0.06em;
+  line-height: 0.94;
+}
+
+.hero-headline {
+  margin: 0;
+  color: #171412;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.5rem, 4vw, 4.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+
+.signature {
+  margin: 0 0 8px;
+  color: #111111;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(6.2rem, 8.5vw, 11.5rem);
+  line-height: 0.8;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  font-style: italic;
+  opacity: 0.96;
+}
+
+.lede {
+  margin-top: 12px;
+  max-width: 540px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #504b47;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  width: 100%;
+  transform: translateX(-42px);
+}
+
+.feature-spotlight {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  min-height: 560px;
+  background: #e9e0d7;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(34, 27, 24, 0.06);
+}
+
+.feature-spotlight img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.feature-copy {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  background: rgba(17, 15, 14, 0.42);
+  backdrop-filter: blur(8px);
+  color: #f9f4f1;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.feature-tag {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  color: #f1e4d7;
+}
+
+.feature-copy h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 2vw, 2.4rem);
+  line-height: 1.08;
+}
+
+.feature-card img {
+  height: 300px;
+}

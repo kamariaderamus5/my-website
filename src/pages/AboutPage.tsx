@@ -1,7 +1,16 @@
+import { useState } from 'react'
 import PageHeader from '../components/PageHeader'
 import { aboutImageAsset } from '../data/content'
 
 export default function AboutPage() {
+    const [noteSubmitted, setNoteSubmitted] = useState(false)
+
+    // TODO: wire this up to a Cloudflare Worker + D1 once the backend is ready.
+    function handleNoteSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+        setNoteSubmitted(true)
+    }
+
     return (
         <section className="page-section about-page">
             <div className="about-portrait">
@@ -46,6 +55,36 @@ export default function AboutPage() {
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                     loading="lazy"
                 />
+            </div>
+
+            <div className="about-note">
+                <h2>Leave a Note!</h2>
+                <p>Say hey, recommend a favorite spot, or just let me know you pulled up!</p>
+
+                {noteSubmitted ? (
+                    <p className="about-note-thanks">Thanks for the note! I'll be in touch soon.</p>
+                ) : (
+                    <form className="about-note-form" onSubmit={handleNoteSubmit}>
+                        <label>
+                            <span className="sr-only">Name</span>
+                            <input type="text" name="name" placeholder="Name" required />
+                        </label>
+
+                        <label>
+                            <span className="sr-only">Email or phone number</span>
+                            <input type="text" name="contact" placeholder="Email or phone number" required />
+                        </label>
+
+                        <label>
+                            <span className="sr-only">Your note</span>
+                            <textarea name="message" placeholder="Your note" rows={4} required />
+                        </label>
+
+                        <button type="submit" className="primary-button">
+                            Send Note
+                        </button>
+                    </form>
+                )}
             </div>
         </section>
     )

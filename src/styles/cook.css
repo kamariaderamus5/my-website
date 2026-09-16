@@ -1,0 +1,138 @@
+/* In The Kitchen (recipe library + detail) */
+
+.highlight-row {
+  margin-bottom: 24px;
+}
+
+.highlight-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: center;
+  background: rgba(249, 246, 243, 0.8);
+  border: 1px solid var(--line);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlight-card img {
+  height: 360px;
+}
+
+.highlight-card > div {
+  padding: 20px 24px;
+}
+
+.recipe-library {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 24px;
+  margin: 28px 0 40px;
+  padding: 20px;
+  background: rgba(249, 246, 243, 0.8);
+  border: 1px solid var(--line);
+}
+
+.recipe-library-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.recipe-library-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.recipe-count {
+  color: var(--muted);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.recipe-search input {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.25);
+  padding: 0.8rem 0.9rem;
+  font: inherit;
+  color: var(--ink);
+}
+
+.recipe-library-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 460px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.recipe-library-item {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 14px 14px 12px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.recipe-library-item span,
+.recipe-library-item small {
+  display: block;
+}
+
+.recipe-library-item span {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.recipe-library-item small {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.recipe-library-item.active {
+  background: var(--accent-soft);
+  border-color: rgba(166, 101, 70, 0.5);
+}
+
+.recipe-library-detail {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.95fr) minmax(0, 1.05fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.recipe-library-detail img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.recipe-library-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recipe-library-actions {
+  margin-top: 8px;
+}
+
+.recipe-list {
+  margin: 18px 0 0;
+  padding-left: 18px;
+  color: #3a3633;
+  line-height: 1.9;
+}
+
+.recipe-steps {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}

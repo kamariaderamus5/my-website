@@ -1,0 +1,128 @@
+/* The Food Map (restaurant list + detail) */
+
+.eat-page-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.eat-search {
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+.eat-search input {
+  width: 220px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.25);
+  padding: 0.8rem 0.9rem;
+  font: inherit;
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .eat-page-header-row {
+    flex-direction: column;
+  }
+
+  .eat-search input {
+    width: 100%;
+  }
+}
+
+.story-card img {
+  height: 260px;
+}
+
+.link-card {
+  display: block;
+}
+
+.restaurant-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.restaurant-meta {
+  display: grid;
+  gap: 8px;
+}
+
+.restaurant-meta p {
+  margin: 0;
+  color: #3d3935;
+}
+
+.restaurant-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.restaurant-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 1rem;
+  text-decoration: none;
+  border: 1px solid rgba(29, 27, 26, 0.2);
+  color: #1d1b1a;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.restaurant-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.restaurant-menu-grid h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.restaurant-menu-grid ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #3d3935;
+  line-height: 1.9;
+}
+
+.restaurant-gallery {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.restaurant-photo {
+  margin: 0;
+  background: rgba(249, 246, 243, 0.8);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.restaurant-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+}
+
+.restaurant-photo figcaption {
+  padding: 12px 14px 16px;
+  color: #4d4a46;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}

@@ -1,0 +1,93 @@
+/* Responsive breakpoints shared across pages */
+
+@media (max-width: 900px) {
+  .hero-section,
+  .card-grid,
+  .story-grid,
+  .about-page,
+  .recipe-detail,
+  .highlight-card,
+  .recipe-library-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-library {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-library-list {
+    max-height: 260px;
+  }
+
+  .topbar {
+    flex-wrap: wrap;
+  }
+
+  .main-nav {
+    order: 3;
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-shell {
+    width: min(100% - 20px, 1200px);
+    padding-top: 12px;
+  }
+
+  .topbar {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .main-nav {
+    gap: 10px 14px;
+    justify-content: flex-start;
+  }
+
+  .main-nav a {
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+  }
+
+  .header-button {
+    width: 100%;
+  }
+
+  .recipe-library-header-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero-copy h1 {
+    font-size: 2.7rem;
+  }
+
+  .playlist-header h1 {
+    white-space: normal;
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  .feature-spotlight {
+    min-height: 420px;
+  }
+
+  .feature-copy {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .recipe-library {
+    padding: 14px;
+  }
+
+  .recipe-library-item {
+    padding: 12px 10px;
+  }
+
+  .recipe-detail img,
+  .about-portrait img {
+    height: 360px;
+  }
+}
