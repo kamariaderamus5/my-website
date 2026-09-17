@@ -10,6 +10,7 @@ import WanderPage from './pages/WanderPage'
 import AdminPage from './admin/AdminPage'
 import RestaurantsAdminPage from './admin/RestaurantsAdminPage'
 import NewRestaurantPage from './admin/NewRestaurantPage'
+import EditRestaurantPage from './admin/EditRestaurantPage'
 
 export default function App() {
   return (
@@ -29,6 +30,10 @@ export default function App() {
       <Route
         path="/admin/restaurants/new"
         element={<NewRestaurantPage />}
+      />
+      <Route
+        path="/admin/restaurants/:slug"
+        element={<EditRestaurantPage />}
       />
     </Routes>
   )

@@ -1,17 +1,45 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
-type CreateRestaurantResponse = {
-  id?: number
-  slug?: string
-  name?: string
-  status?: string
-  error?: string
+type RestaurantMedia = {
+  id: number
+  r2_key: string
+  media_type: string
+  alt_text: string | null
+  url: string | null
 }
 
-export default function NewRestaurantPage() {
+type Restaurant = {
+  id: number
+  slug: string
+  name: string
+  excerpt: string | null
+  location: string | null
+  rating: number | null
+  website_url: string | null
+  menu_url: string | null
+  google_review_url: string | null
+  google_rating: number | null
+  review: string | null
+  status: 'draft' | 'published'
+  visited_date: string | null
+  featured_media: RestaurantMedia | null
+}
+
+type RestaurantResponse = Restaurant & {
+  featured_r2_key?: string | null
+  featured_media_type?: string | null
+  featured_alt_text?: string | null
+}
+
+export default function EditRestaurantPage() {
+  const { slug } = useParams()
   const navigate = useNavigate()
 
+  const [restaurant, setRestaurant] =
+    useState<RestaurantResponse | null>(null)
+
+  const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -27,7 +55,65 @@ export default function NewRestaurantPage() {
     google_review_url: '',
     google_rating: '',
     review: '',
+    status: 'draft' as 'draft' | 'published',
   })
+
+  useEffect(() => {
+    async function loadRestaurant() {
+      try {
+        const response = await fetch('/api/admin/restaurants')
+
+        if (!response.ok) {
+          throw new Error('Failed to load restaurant.')
+        }
+
+        const restaurants =
+          (await response.json()) as RestaurantResponse[]
+
+        const match = restaurants.find(
+          (item) => item.slug === slug,
+        )
+
+        if (!match) {
+          throw new Error('Restaurant not found.')
+        }
+
+        setRestaurant(match)
+
+        setForm({
+          name: match.name ?? '',
+          location: match.location ?? '',
+          visited_date: match.visited_date ?? '',
+          rating:
+            match.rating !== null && match.rating !== undefined
+              ? String(match.rating)
+              : '',
+          excerpt: match.excerpt ?? '',
+          website_url: match.website_url ?? '',
+          menu_url: match.menu_url ?? '',
+          google_review_url:
+            match.google_review_url ?? '',
+          google_rating:
+            match.google_rating !== null &&
+            match.google_rating !== undefined
+              ? String(match.google_rating)
+              : '',
+          review: match.review ?? '',
+          status: match.status,
+        })
+      } catch (err) {
+        setError(
+          err instanceof Error
+            ? err.message
+            : 'Something went wrong.',
+        )
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadRestaurant()
+  }, [slug])
 
   function updateField(
     field: keyof typeof form,
@@ -44,45 +130,54 @@ export default function NewRestaurantPage() {
   ) {
     event.preventDefault()
 
+    if (!restaurant) {
+      return
+    }
+
     setSaving(true)
     setError('')
     setSuccess('')
 
     try {
-      const response = await fetch('/api/admin/restaurants', {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
+      const response = await fetch(
+        `/api/admin/restaurants/${restaurant.id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: form.name,
+            location: form.location,
+            visited_date: form.visited_date,
+            rating: form.rating
+              ? Number(form.rating)
+              : null,
+            excerpt: form.excerpt,
+            website_url: form.website_url,
+            menu_url: form.menu_url,
+            google_review_url:
+              form.google_review_url,
+            google_rating: form.google_rating
+              ? Number(form.google_rating)
+              : null,
+            review: form.review,
+            status: form.status,
+          }),
         },
-        body: JSON.stringify({
-          name: form.name,
-          location: form.location,
-          visited_date: form.visited_date,
-          rating: form.rating
-            ? Number(form.rating)
-            : undefined,
-          excerpt: form.excerpt,
-          website_url: form.website_url,
-          menu_url: form.menu_url,
-          google_review_url: form.google_review_url,
-          google_rating: form.google_rating
-            ? Number(form.google_rating)
-            : undefined,
-          review: form.review,
-          status: 'draft',
-        }),
-      })
+      )
 
-      const data =
-        (await response.json()) as CreateRestaurantResponse
+      const data = (await response.json()) as {
+        error?: string
+      }
 
       if (!response.ok) {
         throw new Error(
-          data.error ?? 'Failed to save restaurant.',
+          data.error ?? 'Failed to update restaurant.',
         )
       }
 
-      setSuccess('Restaurant saved as a draft.')
+      setSuccess('Restaurant updated.')
 
       setTimeout(() => {
         navigate('/admin/restaurants')
@@ -98,6 +193,31 @@ export default function NewRestaurantPage() {
     }
   }
 
+  if (loading) {
+    return (
+      <section className="admin-page">
+        <p>Loading restaurant...</p>
+      </section>
+    )
+  }
+
+  if (!restaurant) {
+    return (
+      <section className="admin-page">
+        <Link
+          to="/admin/restaurants"
+          className="admin-back-link"
+        >
+          ← Back to Restaurants
+        </Link>
+
+        <h1>Restaurant not found</h1>
+
+        {error && <p role="alert">{error}</p>}
+      </section>
+    )
+  }
+
   return (
     <section className="admin-page">
       <Link
@@ -110,9 +230,13 @@ export default function NewRestaurantPage() {
       <div className="admin-header">
         <div>
           <p className="story-tag">The Food Map</p>
-          <h1>New Restaurant</h1>
-          <p>Create a new restaurant review.</p>
+          <h1>Edit Restaurant</h1>
+          <p>{restaurant.name}</p>
         </div>
+
+        <span className="admin-status">
+          {form.status}
+        </span>
       </div>
 
       <form
@@ -127,10 +251,12 @@ export default function NewRestaurantPage() {
               <span>Restaurant name</span>
               <input
                 type="text"
-                name="name"
                 value={form.name}
                 onChange={(event) =>
-                  updateField('name', event.target.value)
+                  updateField(
+                    'name',
+                    event.target.value,
+                  )
                 }
                 required
               />
@@ -140,7 +266,6 @@ export default function NewRestaurantPage() {
               <span>Location</span>
               <input
                 type="text"
-                name="location"
                 value={form.location}
                 onChange={(event) =>
                   updateField(
@@ -155,7 +280,6 @@ export default function NewRestaurantPage() {
               <span>Date visited</span>
               <input
                 type="date"
-                name="visited_date"
                 value={form.visited_date}
                 onChange={(event) =>
                   updateField(
@@ -170,7 +294,6 @@ export default function NewRestaurantPage() {
               <span>Rating</span>
               <input
                 type="number"
-                name="rating"
                 min="0"
                 max="5"
                 step="0.1"
@@ -188,7 +311,6 @@ export default function NewRestaurantPage() {
           <label>
             <span>Excerpt</span>
             <textarea
-              name="excerpt"
               rows={3}
               value={form.excerpt}
               onChange={(event) =>
@@ -209,7 +331,6 @@ export default function NewRestaurantPage() {
               <span>Restaurant website</span>
               <input
                 type="url"
-                name="website_url"
                 value={form.website_url}
                 onChange={(event) =>
                   updateField(
@@ -224,7 +345,6 @@ export default function NewRestaurantPage() {
               <span>Menu</span>
               <input
                 type="url"
-                name="menu_url"
                 value={form.menu_url}
                 onChange={(event) =>
                   updateField(
@@ -239,7 +359,6 @@ export default function NewRestaurantPage() {
               <span>My Google Review</span>
               <input
                 type="url"
-                name="google_review_url"
                 value={form.google_review_url}
                 onChange={(event) =>
                   updateField(
@@ -254,7 +373,6 @@ export default function NewRestaurantPage() {
               <span>Google rating</span>
               <input
                 type="number"
-                name="google_rating"
                 min="0"
                 max="5"
                 step="0.1"
@@ -276,8 +394,7 @@ export default function NewRestaurantPage() {
           <label>
             <span>Review</span>
             <textarea
-              name="review"
-              rows={10}
+              rows={12}
               value={form.review}
               onChange={(event) =>
                 updateField(
@@ -290,36 +407,34 @@ export default function NewRestaurantPage() {
         </div>
 
         <div className="admin-form-section">
-          <p className="story-tag">Photos</p>
+          <p className="story-tag">Featured photo</p>
 
-          <div className="admin-upload-placeholder">
-            <p>Featured photo</p>
-            <input
-              type="file"
-              accept="image/*"
+          {restaurant.featured_media?.url && (
+            <img
+              src={restaurant.featured_media.url}
+              alt={
+                restaurant.featured_media.alt_text ??
+                restaurant.name
+              }
+              className="admin-featured-image"
             />
-          </div>
+          )}
 
           <div className="admin-upload-placeholder">
-            <p>Gallery photos</p>
+            <p>Replace featured photo</p>
             <input
               type="file"
               accept="image/*"
-              multiple
             />
           </div>
         </div>
 
         {error && (
-          <p role="alert">
-            {error}
-          </p>
+          <p role="alert">{error}</p>
         )}
 
         {success && (
-          <p role="status">
-            {success}
-          </p>
+          <p role="status">{success}</p>
         )}
 
         <div className="admin-form-actions">
@@ -328,15 +443,7 @@ export default function NewRestaurantPage() {
             className="secondary-button"
             disabled={saving}
           >
-            {saving ? 'Saving...' : 'Save draft'}
-          </button>
-
-          <button
-            type="button"
-            className="secondary-button"
-            disabled
-          >
-            Publish
+            {saving ? 'Saving...' : 'Save changes'}
           </button>
         </div>
       </form>

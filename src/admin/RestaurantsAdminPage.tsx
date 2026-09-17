@@ -24,7 +24,7 @@ export default function RestaurantsAdminPage() {
     useEffect(() => {
         async function loadRestaurants() {
             try {
-                const response = await fetch('/api/restaurants')
+                const response = await fetch('/api/admin/restaurants')
 
                 if (!response.ok) {
                     throw new Error('Failed to load restaurants')
